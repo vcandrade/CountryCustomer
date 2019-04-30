@@ -27,8 +27,7 @@ public class CountryDAO {
 
         try {
 
-            ConnectionDAO connectionDAO = new ConnectionDAO();
-            conn = connectionDAO.getConnection();
+            conn = ConnectionDAO.getInstance().getConnection();
 
             stmt = conn.prepareStatement("INSERT INTO country(name, acronym, phone_digits) VALUES(?, ?, ?)");
             stmt.setString(1, country.getName());
@@ -59,8 +58,7 @@ public class CountryDAO {
 
         try {
 
-            ConnectionDAO connectionDAO = new ConnectionDAO();
-            conn = connectionDAO.getConnection();
+            conn = ConnectionDAO.getInstance().getConnection();
 
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
@@ -104,8 +102,7 @@ public class CountryDAO {
 
         try {
 
-            ConnectionDAO connectionDAO = new ConnectionDAO();
-            conn = connectionDAO.getConnection();
+            conn = ConnectionDAO.getInstance().getConnection();
 
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
@@ -143,8 +140,7 @@ public class CountryDAO {
 
         try {
 
-            ConnectionDAO connectionDAO = new ConnectionDAO();
-            conn = connectionDAO.getConnection();
+            conn = ConnectionDAO.getInstance().getConnection();
 
             stmt = conn.prepareStatement("UPDATE country SET name = ?, acronym = ?, phone_digits = ? WHERE id = ?");
             stmt.setString(1, country.getName());
@@ -171,9 +167,9 @@ public class CountryDAO {
         PreparedStatement stmt = null;
 
         try {
-            ConnectionDAO connectionDAO = new ConnectionDAO();
-            conn = connectionDAO.getConnection();
-
+            
+            conn = ConnectionDAO.getInstance().getConnection();
+            
             stmt = conn.prepareStatement("DELETE FROM country WHERE id = ?");
             stmt.setInt(1, id);
 
