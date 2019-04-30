@@ -10,27 +10,27 @@ import java.sql.SQLException;
  * vcandrade@utfpr.edu.br
  */
 
-public class Conexao {
+public class ConnectionDAO {
 
     private static Connection conn;
     private final String driver;
-    private final String usuario;
-    private final String senha;
+    private final String user;
+    private final String password;
     private final String url;
 
-    public Conexao() {
+    public ConnectionDAO() {
         
         driver = "com.mysql.jdbc.Driver";
         url = "jdbc:mysql://localhost:3306/countrycustomer";
-        usuario = "root";
-        senha = "";
+        user = "root";
+        password = "";
     }
 
-    public Connection conectar() throws ClassNotFoundException, SQLException {
+    public Connection getConnection() throws ClassNotFoundException, SQLException {
         
         conn = null;
         Class.forName(driver);
-        conn = DriverManager.getConnection(url, usuario, senha);        
+        conn = DriverManager.getConnection(url, user, password);        
         
         return conn;
     }

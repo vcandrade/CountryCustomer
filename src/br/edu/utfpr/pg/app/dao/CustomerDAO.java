@@ -27,8 +27,8 @@ public class CustomerDAO {
 
         try {
 
-            Conexao conexao = new Conexao();
-            conn = conexao.conectar();
+            ConnectionDAO connectionDAO = new ConnectionDAO();
+            conn = connectionDAO.getConnection();
 
             stmt = conn.prepareStatement("INSERT INTO customer(name, phone, age, country) VALUES(?, ?, ?, ?)");
             stmt.setString(1, customer.getName());
@@ -60,8 +60,8 @@ public class CustomerDAO {
 
         try {
 
-            Conexao conexao = new Conexao();
-            conn = conexao.conectar();
+            ConnectionDAO connectionDAO = new ConnectionDAO();
+            conn = connectionDAO.getConnection();
 
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
@@ -102,8 +102,8 @@ public class CustomerDAO {
 
         try {
 
-            Conexao conexao = new Conexao();
-            conn = conexao.conectar();
+            ConnectionDAO connectionDAO = new ConnectionDAO();
+            conn = connectionDAO.getConnection();
 
             stmt = conn.prepareStatement("UPDATE customer SET name = ?, phone = ?, age = ?, country = ? WHERE id = ?");
             stmt.setString(1, customer.getName());
@@ -131,8 +131,8 @@ public class CustomerDAO {
         PreparedStatement stmt = null;
 
         try {
-            Conexao conexao = new Conexao();
-            conn = conexao.conectar();
+            ConnectionDAO connectionDAO = new ConnectionDAO();
+            conn = connectionDAO.getConnection();
 
             stmt = conn.prepareStatement("DELETE FROM customer WHERE id = ?");
             stmt.setInt(1, id);
